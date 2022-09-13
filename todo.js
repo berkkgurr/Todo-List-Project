@@ -63,8 +63,11 @@ function deleteTodoFromStorage(todo) {
 }
 function addTodo(params) {
     const newTodo=todoInput.value.trim(); //trim() boşlukları siler
+    let todos=getTodosFromStorage();
     if(newTodo==="")
     showAlert("danger","Lütfen bir todo girin..");
+    else if(todos.indexOf(newTodo)!=-1)
+    showAlert("warning","Bu todo zaten mevcut..");
     else{
     addTodoToUI(newTodo); //aldığı değeri list item olarak eklemek üzere fonksiyona yolladı
     addTodoStorage(newTodo);
